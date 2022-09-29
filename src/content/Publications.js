@@ -5,7 +5,7 @@ import icon_external_link from './img/icon_external_link.png';
 
 export default function Publications({indicatorId, setIndicatorId}) {
 
-  const [lists, setLists] = useState("");
+  const [lists, setLists] = useState([]);
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState('default.jpg');
   const [title, setTitle] = useState('');
@@ -16,29 +16,13 @@ export default function Publications({indicatorId, setIndicatorId}) {
   }, [indicatorId]);
 
   function fetchDataPublications(x) {
-
-    let loadinginfo = () =>  (<div><img src={loadingspinner} /> Cargando desde Api...</div>);
-
-    setLists(loadinginfo);
+    setLists([]);
     fetch("https://api-cepalstat.cepal.org/cepalstat/api/v1/indicator/"+x+"/publications?lang=es")
     .then(response => {
       return response.json()
     })
     .then(data => {
-      const data1 = data.body.publications;
-      let listado = data1.map(({title,date,thumbnail,url,description}) => {
-        return (
-          <>
-            <div className="publications_box col-md-4 shadow-sm ">
-              <div className="publications_photo"><img src={thumbnail} className="publications_thumb" width="100px" /> </div>
-              <div className="publications_title">{title}</div>
-              <div className="publications_date">{date} </div>
-              <div><Button color="primary" className="btn-sm" onClick={()=>muestra(thumbnail,title,description)}>Más Información</Button>  <a href={url} className="btn btn-sm btn-primary" target="_blank"> Ver <img className="align_btn" src={icon_external_link} /></a></div>
-            </div>
-          </>
-        )
-      })
-      setLists(listado);
+      setLists(data.body.publications);
     });
   }
 
@@ -58,7 +42,17 @@ export default function Publications({indicatorId, setIndicatorId}) {
       <div className="row align_row">
         <div className="col-md-12">
           <div className="row">
-            {lists}
+          {lists.length==0 && (<div><img src={loadingspinner} /> Cargando desde Api...</div>)}
+          {lists.map(({title,date,thumbnail,url,description}) => {
+            return (
+                <div key={title} className="publications_box col-md-4 shadow-sm ">
+                  <div className="publications_photo"><img src={thumbnail} className="publications_thumb" width="100px" /> </div>
+                  <div className="publications_title">{title}</div>
+                  <div className="publications_date">{date} </div>
+                  <div><Button color="primary" className="btn-sm" onClick={()=>muestra(thumbnail,title,description)}>Más Información</Button>  <a href={url} className="btn btn-sm btn-primary" target="_blank"> Ver <img className="align_btn" src={icon_external_link} /></a></div>
+                </div>
+            )
+          })}
           </div>
         </div>
       </div>

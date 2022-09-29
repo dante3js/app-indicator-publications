@@ -11,14 +11,18 @@ const [nombre_area, setNombre_area] = useState("");
 function verPubicacionesRelacionadas(x) {
   setIndicatorId(x);
   let div = "div_"+x;
+  destacaSeleccionada(div);
+}
+
+function destacaSeleccionada(x) {
   let elements = document.getElementsByClassName("row-dash-indicator-selected");
   for (var i = 0; i < elements.length; i++) {
      elements[i].classList.remove("row-dash-indicator-selected");
   }
-  document.getElementById(div).classList.add("row-dash-indicator-selected");
-
+  document.getElementById(x).classList.add("row-dash-indicator-selected");
   return false;
 }
+
 
 useEffect(() => {
   setLists(false);
@@ -48,7 +52,7 @@ useEffect(() => {
     setLists(listado);
 
     let default_selected = `div_${indicatorId}`;
-    document.getElementById(default_selected).classList.add("row-dash-indicator-selected");
+    destacaSeleccionada(default_selected);
 
   });
 

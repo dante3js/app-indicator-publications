@@ -1,0 +1,76 @@
+
+.row-dash-indicator-selected {
+  background-color: #FAF1DE;
+  background-image: linear-gradient(to right, #DDF0F0, #F9FBFC);
+  font-weight: bold;
+  color: #1F8580;
+}
+
+.row-dash-indicator-link-2 {
+  font-family: "SourceSansRegular", sans-serif !important;
+  color: #33738E;
+  font-size: 14px;
+  padding: 5px;
+  text-align: justify;
+  border-bottom: 1px dotted #DEEBF1;
+}
+
+.row-dash-indicator-link-2 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.row-dash-indicator-link-2 {
+  background-color: #F9FBFC;
+}
+
+.row-dash-indicator-2, .row-dash-indicator-link-2
+{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.row-dash-indicator-link-2:hover {
+  background-color: #E2ECF1;
+  cursor: pointer;
+}
+
+.dashboard-title {
+  font-family: "OswaldRegular", sans-serif !important;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 10px 20px;
+}
+
+.titulo_indicador {
+  font-weight: bold;
+}
+
+.titulo_area_nombre {
+  border-bottom: 1px solid #ccc;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.titulo_area_id {
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.titulo_area_indicadores {
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+
+div.dashboard-list {
+  border: 1px solid #dddddd;
+  width: auto;
+  height: 750px;
+  overflow: auto;
+  padding-right: 0px;
+}

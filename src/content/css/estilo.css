@@ -1,0 +1,94 @@
+.main_content {
+  border: 1px none #eeeeee;
+}
+
+.main_content {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.publications_box {
+  border: 1px solid #eeeeee;
+  font-size: 14px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+
+.publications1_box:hover {
+  background-color: #DAE0E7;
+}
+
+.publications_photo {}
+
+.publications_title {
+  font-size: 18px;
+}
+
+.publications_date {
+  font-size: 12px;
+  font-weight: bold;
+  color: #40A25E;
+  font-family: 'Oswald', sans-serif;
+}
+
+.publications_thumb {
+  border: 1px solid #cccccc;
+}
+
+.publications_url a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #2183CB;
+}
+
+.publications_url a:hover {
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.btn_load_related {
+  margin-top: -5px;
+}
+
+.indicator_title {
+  font-size: 24px;
+}
+
+.modal_ind_title {
+  color: blue;
+}
+
+.find_indicator_title {
+  border-bottom: 1px solid #333;
+}
+
+.dashboard_list {
+  border: 1px solid #dddddd;
+  width: 100%;
+  height: 650px;
+  overflow: auto;
+  padding-right: 0px;
+}
+
+.align_btn {
+  margin-top: -5px;
+}
+
+.align_row {
+  margin-top: 5px;
+}
+
+.line_buscador {
+  position: absolute;
+  margin: 0px;
+  border: 1px none red;
+  background-color: #f2f5f8;
+  width: auto;
+  padding: 10px;
+}
+
+.line_buscador2 {}
+
+.line_buscador3 {
+  height: 60px;
+}

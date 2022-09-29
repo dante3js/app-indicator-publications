@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Spinner } from 'reactstrap';
 import './css/estilo_arbol.css';
 
-export default function ArbolIndicadores({indicatorId, setIndicatorId}) {
+export default function ThematicTree({indicatorId, setIndicatorId}) {
 
 const [lists, setLists] = useState(false);
 const [area_id, setArea_id] = useState("");
@@ -42,17 +42,24 @@ useEffect(() => {
 
     let listado = data1.map(({name,order,indicator_id}) => {
       let name_div_indic = `div_${indicator_id}`;
-      return (
-        <>
-          <div className="row-dash-indicator-link-2" id={name_div_indic} onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
-        </>
-      )
+      let default_id_indicador = `div_${indicatorId}`;
+
+        return (
+          <div key={indicator_id}>
+
+            {name_div_indic==default_id_indicador && (
+              <div className="row-dash-indicator-link-2 row-dash-indicator-selected" id={name_div_indic} onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
+            )}
+
+            {name_div_indic!=default_id_indicador && (
+              <div className="row-dash-indicator-link-2" id={name_div_indic} onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
+            )}
+
+          </div>
+        )
+
     });
-
     setLists(listado);
-
-    destacaSeleccionada("div_4183");
-
   });
 
 

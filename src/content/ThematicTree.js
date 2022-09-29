@@ -51,8 +51,7 @@ useEffect(() => {
 
     setLists(listado);
 
-    let default_selected = `div_${indicatorId}`;
-    destacaSeleccionada(default_selected);
+    destacaSeleccionada("div_4183");
 
   });
 

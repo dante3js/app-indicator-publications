@@ -10,7 +10,7 @@ const [nombre_area, setNombre_area] = useState("");
 
 function verPubicacionesRelacionadas(x) {
   setIndicatorId(x);
-  let div = "div_"+x;
+  let div = `div_${x}`;
   destacaSeleccionada(div);
 }
 
@@ -69,8 +69,8 @@ useEffect(() => {
 return (
   <>
     <div className="dashboard_list">
-      <div className="titulo_area_nombre">Indicadores del Area: {nombre_area}</div>
-      <div className="titulo_area_id">Area ID: {area_id}</div>
+      <div className="titulo_area_nombre">Indicadores del área: {nombre_area}</div>
+      <div className="titulo_area_id">Área ID: {area_id}</div>
       <div className="titulo_area_indicadores">Indicadores:</div>
       {!lists && (<div><Spinner type="border" color="success" /></div>)}
       {lists}

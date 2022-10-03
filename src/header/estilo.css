@@ -1,0 +1,25 @@
+.main_header {
+  border-bottom: 5px solid #0D6EFD;
+  background-color: #DDE7EE;
+  background-image: linear-gradient(to right, #CBDAE4, #F7F9FB);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.header_title {
+  font-size: 22px;
+  font-family: "Source Sans Pro", sans-serif !important;
+}
+
+.header_title h2 {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.header_subtitle {
+  font-size: 14px
+}
+
+.margin_logo {
+  padding-left: 40px;
+}

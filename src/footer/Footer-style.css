@@ -1,0 +1,139 @@
+
+
+.footer-color-1 {
+  background-color: #B4D0E0;
+}
+
+.footer-color {
+  background-color: #D8EBF3;
+  color: #666666;
+  font-family: "SourceSansRegular", sans-serif !important;
+  font-size: 1.0em;
+  margin-top: 20px;
+}
+
+.footer-color-white {
+  background-color: #ffffff;
+  color: #00689D;
+  font-family: "SourceSansSemibold", sans-serif !important;
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.footer-line-1 {
+  padding: 5px 0px;
+  border-bottom: 0px solid #ffffff;
+  background-color: #254E60;
+  color: #fff;
+}
+
+.footer-line-2 {
+  padding: 20px 0px;
+  border-bottom: 2px solid #F0646D;
+}
+
+.footer-list {
+  margin-left: 0px;
+}
+
+.footer-list ul {
+  margin-left: -5px;
+}
+
+.footer-list li {
+  margin-left: -5px;
+  padding-left: 0px;
+}
+
+.footer-list li {
+  text-transform: uppercase;
+  list-style: none;
+  font-weight: bold;
+}
+
+.footer-list ul li {
+  font-weight: normal;
+  text-transform: none;
+  list-style: none;
+}
+
+.footer-list a {
+  text-transform: none;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer-list a:hover {
+  text-transform: none;
+  color: #666666;
+  text-decoration: underline;
+}
+
+.footer-button-1 {
+  background-color: #DDA838;
+  color: #254E60;
+  border-color: #DDA838;
+}
+
+.footer-list-title-center {
+  text-transform: uppercase;
+  list-style: none;
+  font-weight: bold;
+  text-align: center;
+  color: #218D88;
+}
+
+.footer-link-title-1 {
+  text-transform: uppercase;
+  margin-left: -20px;
+  margin-bottom: 15px;
+  padding-left: 0px;
+  margin-top: 30px;
+  color: #218D88;
+}
+
+.footer-link-title-1 a,
+.footer-link-title-1 a:hover {
+  text-transform: uppercase;
+  margin-left: -20px;
+  color: #2C6772;
+}
+
+.footer-link-list-1 li {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: -40px;
+}
+
+.footer-link-list-1 a,
+.footer-link-list-1 a:hover {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: #218D88;
+}
+
+.footer-line-3 {
+  border-bottom: 0px none #F0646D;
+}
+
+.footer-color-4 {
+  background-color: #DDA838;
+}
+
+.footer-color-5 {
+  background-color: #3D8AAA;
+  color: #FFFFFF;
+}
+
+.footer-line-3 a {
+  color: #3D89AA;
+}
+
+.footer-list ul li::before {
+  content: "\2022";
+  color: #F0646D;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}

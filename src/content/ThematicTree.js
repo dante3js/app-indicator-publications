@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Spinner } from 'reactstrap';
 import './css/estilo_arbol.css';
 
-export default function ThematicTree({indicatorId, setIndicatorId}) {
+export default function ThematicTree({indicatorId,setIndicatorId,languageapp,setLanguageapp}) {
 
 const [lists, setLists] = useState(false);
 const [area_id, setArea_id] = useState("");
@@ -26,7 +26,7 @@ function destacaSeleccionada(x) {
 
 useEffect(() => {
   setLists(false);
-  fetch("https://api-cepalstat.cepal.org/cepalstat/api/v1/thematic-tree/?area_id=729&lang=es&format=json")
+  fetch(`https://api-cepalstat.cepal.org/cepalstat/api/v1/thematic-tree/?area_id=729&lang=${languageapp}&format=json`)
   .then(response => {
     return response.json()
   })
@@ -63,15 +63,15 @@ useEffect(() => {
   });
 
 
-}, []);
+}, [languageapp]);
 
 
 return (
   <>
     <div className="dashboard_list">
-      <div className="titulo_area_nombre">Indicadores del área: {nombre_area}</div>
-      <div className="titulo_area_id">Área ID: {area_id}</div>
-      <div className="titulo_area_indicadores">Indicadores:</div>
+      <div className="titulo_area_nombre">{languageapp=="es" && ("Indicadores del área:")}{languageapp=="en" && ("Area Indicators:")} {nombre_area}</div>
+      <div className="titulo_area_id">{languageapp=="es" && ("Área ID:")}{languageapp=="en" && ("ID Area:")} {area_id}</div>
+      <div className="titulo_area_indicadores">{languageapp=="es" && ("Indicadores:")}{languageapp=="en" && ("Indicators:")}</div>
       {!lists && (<div><Spinner type="border" color="success" /></div>)}
       {lists}
     </div>

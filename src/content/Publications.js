@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import loadingspinner from './img/loading.gif';
 import icon_external_link from './img/icon_external_link.png';
 
-export default function Publications({indicatorId, setIndicatorId}) {
+export default function Publications({indicatorId,setIndicatorId,languageapp,setLanguageapp}) {
 
   const [lists, setLists] = useState([]);
   const [modal, setModal] = useState(false);
@@ -13,11 +13,11 @@ export default function Publications({indicatorId, setIndicatorId}) {
 
   useEffect(() => {
     fetchDataPublications(indicatorId);
-  }, [indicatorId]);
+  }, [indicatorId,languageapp]);
 
   function fetchDataPublications(x) {
     setLists([]);
-    fetch("https://api-cepalstat.cepal.org/cepalstat/api/v1/indicator/"+x+"/publications?lang=es")
+    fetch(`https://api-cepalstat.cepal.org/cepalstat/api/v1/indicator/${x}/publications?lang=${languageapp}`)
     .then(response => {
       return response.json()
     })
@@ -43,13 +43,14 @@ export default function Publications({indicatorId, setIndicatorId}) {
         <div className="col-md-12">
           <div className="row">
           {lists.length==0 && (<div><img src={loadingspinner} /> Cargando desde Api...</div>)}
+          {lists.length==0 && (<div><img src={loadingspinner} /> Cargando desde Api...</div>)}
           {lists.map(({title,date,thumbnail,url,description}) => {
             return (
                 <div key={title} className="publications_box col-md-4 shadow-sm ">
                   <div className="publications_photo"><img src={thumbnail} className="publications_thumb" width="100px" /> </div>
                   <div className="publications_title">{title}</div>
                   <div className="publications_date">{date} </div>
-                  <div><Button color="primary" className="btn-sm" onClick={()=>muestra(thumbnail,title,description)}>Más Información</Button>  <a href={url} className="btn btn-sm btn-primary" target="_blank"> Ver <img className="align_btn" src={icon_external_link} /></a></div>
+                  <div><Button color="primary" className="btn-sm" onClick={()=>muestra(thumbnail,title,description)}>{languageapp=="es" && ("Más Información")}{languageapp=="en" && ("More Information")}</Button>  <a href={url} className="btn btn-sm btn-primary" target="_blank"> {languageapp=="es" && ("Ver")} {languageapp=="en" && ("View")} <img className="align_btn" src={icon_external_link} /></a></div>
                 </div>
             )
           })}
@@ -65,7 +66,7 @@ export default function Publications({indicatorId, setIndicatorId}) {
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={toggle}>
-            Cerrar
+            {languageapp=="es" && ("Cerrar")}{languageapp=="en" && ("Close")}
           </Button>
         </ModalFooter>
       </Modal>

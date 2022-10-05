@@ -42,8 +42,8 @@ export default function Publications({indicatorId,setIndicatorId,languageapp,set
       <div className="row align_row">
         <div className="col-md-12">
           <div className="row">
-          {lists.length==0 && (<div><img src={loadingspinner} /> Cargando desde Api...</div>)}
-          {lists.length==0 && (<div><img src={loadingspinner} /> Cargando desde Api...</div>)}
+
+          {lists.length==0 && (<div><img src={loadingspinner} /> {languageapp=="es" && ("Cargando desde Api...")}   {languageapp=="en" && ("Loading from Api...")}   </div>)}
           {lists.map(({title,date,thumbnail,url,description}) => {
             return (
                 <div key={title} className="publications_box col-md-4 shadow-sm ">

@@ -3,29 +3,16 @@ import { Spinner } from 'reactstrap';
 import './css/estilo_arbol.css';
 
 export default function ThematicTree({indicatorId,setIndicatorId,languageapp,setLanguageapp}) {
-
-const [lists, setLists] = useState(false);
+const [data1, setData1] = useState([]);
 const [area_id, setArea_id] = useState("");
 const [nombre_area, setNombre_area] = useState("");
 
 function verPubicacionesRelacionadas(x) {
   setIndicatorId(x);
-  let div = `div_${x}`;
-  destacaSeleccionada(div);
 }
-
-function destacaSeleccionada(x) {
-  let elements = document.getElementsByClassName("row-dash-indicator-selected");
-  for (var i = 0; i < elements.length; i++) {
-     elements[i].classList.remove("row-dash-indicator-selected");
-  }
-  document.getElementById(x).classList.add("row-dash-indicator-selected");
-  return false;
-}
-
 
 useEffect(() => {
-  setLists(false);
+  setData1([]);
   fetch(`https://api-cepalstat.cepal.org/cepalstat/api/v1/thematic-tree/?area_id=729&lang=${languageapp}&format=json`)
   .then(response => {
     return response.json()
@@ -38,28 +25,7 @@ useEffect(() => {
     setNombre_area(x1);
     setArea_id(x2);
 
-    const data1 = data.body.children[0].children;
-
-    let listado = data1.map(({name,order,indicator_id}) => {
-      let name_div_indic = `div_${indicator_id}`;
-      let default_id_indicador = `div_${indicatorId}`;
-
-        return (
-          <div key={indicator_id}>
-
-            {name_div_indic==default_id_indicador && (
-              <div className="row-dash-indicator-link-2 row-dash-indicator-selected" id={name_div_indic} onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
-            )}
-
-            {name_div_indic!=default_id_indicador && (
-              <div className="row-dash-indicator-link-2" id={name_div_indic} onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
-            )}
-
-          </div>
-        )
-
-    });
-    setLists(listado);
+    setData1(data.body.children[0].children);
   });
 
 
@@ -72,8 +38,23 @@ return (
       <div className="titulo_area_nombre">{languageapp=="es" && ("Indicadores del área:")}{languageapp=="en" && ("Area Indicators:")} {nombre_area}</div>
       <div className="titulo_area_id">{languageapp=="es" && ("Área ID:")}{languageapp=="en" && ("ID Area:")} {area_id}</div>
       <div className="titulo_area_indicadores">{languageapp=="es" && ("Indicadores:")}{languageapp=="en" && ("Indicators:")}</div>
-      {!lists && (<div><Spinner type="border" color="success" /></div>)}
-      {lists}
+      {data1.length === 0 && (<div><Spinner type="border" color="success" /></div>)}
+      {data1.map(({name,order,indicator_id}) => {
+        return (
+          <div key={indicator_id}>
+
+            {indicator_id==indicatorId && (
+              <div className="row-dash-indicator-link-2 row-dash-indicator-selected" onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
+            )}
+
+            {indicator_id!=indicatorId && (
+              <div className="row-dash-indicator-link-2" onClick={()=>verPubicacionesRelacionadas(indicator_id)}> {name} <br/><small>ID: {indicator_id}</small></div>
+            )}
+
+          </div>
+        )
+
+    })}
     </div>
   </>
 
